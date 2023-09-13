@@ -6,7 +6,7 @@ import fileUpload from "express-fileupload";
 import dotenv from "dotenv";
 import cors from "cors";
 
-const app = express()
+const app = express();
 
 // config
 dotenv.config({ path: "config/config.env" });
@@ -17,11 +17,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(fileUpload());
 
-
 import path from "path";
 const __dirname = path.resolve();
 
-app.use(express.static(path.join(__dirname, "./client/build")))    // deploy only
+app.use(express.static(path.join(__dirname, "./client/build")));    // deploy only
 
 app.get('/', async (req, res) => {
    res.sendFile(path.join(__dirname, './client/build/index.html'));
