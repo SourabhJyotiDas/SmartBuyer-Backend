@@ -17,14 +17,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(fileUpload());
 
-import path from "path";
-const __dirname = path.resolve();
+// import path from "path";
+// const __dirname = path.resolve();
 
-app.use(express.static(path.join(__dirname, "./client/build")));    // deploy only
+// app.use(express.static(path.join(__dirname, "./client/build")));    // deploy only
 
-app.get('/', async (req, res) => {
-   res.sendFile(path.join(__dirname, './client/build/index.html'));
-});
+// app.get('/', async (req, res) => {
+//    res.sendFile(path.join(__dirname, './client/build/index.html'));
+// });
 
 // route Imports
 import product from "./routes/productRoute.js";
