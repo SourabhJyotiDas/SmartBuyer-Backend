@@ -39,7 +39,6 @@ router.route("/reviews").get(getAllProductReview)
 
 router.route("/reviews").delete(isAuthenticatedUser, deleteReview)
 
-
 router.route("/admin/products").get(isAuthenticatedUser, authorisedRoles("admin"), getAdminProducts)
 
 

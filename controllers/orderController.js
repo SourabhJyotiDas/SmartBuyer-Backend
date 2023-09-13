@@ -29,7 +29,7 @@ export const newOrder = async function (req, res, next) {
 // get Single Order
 export const singleOrder = async function (req, res, next) {
     try {
-        const order = await Order.findById(req.params.id) // populate is not working .populate("user", "name email")
+        const order = await Order.findById(req.params.id).populate("user", "name email avatar")
         // console.log(order);
         if (!order) {
             return next(new ErrorHandler("No Order found with this id", 404))
