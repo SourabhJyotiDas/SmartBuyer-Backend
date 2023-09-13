@@ -9,8 +9,8 @@ import cors from "cors";
 const app = express()
 
 // config
-dotenv.config({ path: "config/config.env" })
-app.use(cors())
+dotenv.config({ path: "config/config.env" });
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
