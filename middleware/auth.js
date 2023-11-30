@@ -18,7 +18,7 @@ export const isAuthenticatedUser = async function (req, res, next) {
         req.user = await User.findById(decodedData.id)
         next()
     } catch (error) {
-        console.log("ERROR IS : " + error.message);
+        return next(new ErrorHandler(error.message, 500))
     }
 }
 
@@ -29,6 +29,6 @@ export const authorisedRoles = (...roles) => {
                 new ErrorHandler(`Role: ${req.user.role} is not allowed to access this resouce`, 403)
             )
         }
-        next()
+        next();
     }
 }

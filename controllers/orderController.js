@@ -30,7 +30,7 @@ export const newOrder = async function (req, res, next) {
 export const singleOrder = async function (req, res, next) {
     try {
         const order = await Order.findById(req.params.id).populate("user", "name email avatar")
-        // console.log(order);
+        
         if (!order) {
             return next(new ErrorHandler("No Order found with this id", 404))
         }
@@ -57,7 +57,7 @@ export const myOrders = async function (req, res, next) {
 
 // get all Orders -- Admin
 export const getAllOrders = async (req, res, next) => {
-    const orders = await Order.find();
+    const orders = await Order.find({});
 
     let totalAmount = 0;
 

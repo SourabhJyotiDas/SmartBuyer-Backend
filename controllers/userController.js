@@ -1,11 +1,3 @@
-// const ErrorHandler = require("../utils/errorHandler");
-// const User = require("../models/userModels");
-// const sendToken = require("../utils/jwtToken");
-// const sendEmail = require("../utils/sendEmail");
-// const crypto = require("crypto");
-// const cloudinary = require("cloudinary");
-
-// Import statements for ES6 modules
 import ErrorHandler from "../utils/errorHandler.js";
 import User from "../models/userModels.js";
 import sendToken from "../utils/jwtToken.js";
@@ -69,6 +61,8 @@ export const logout = async (req, res, next) => {
   res.cookie("token", null, {
     expires: new Date(Date.now()),
     httpOnly: true,
+    secure: true, // Set this to true when using SameSite=None
+    sameSite: "none"
   });
 
   res.status(200).json({

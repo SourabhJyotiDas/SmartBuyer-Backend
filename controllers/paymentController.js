@@ -14,10 +14,10 @@ export const processPayment = async (req, res, next) => {
         company: "SmartBuyer",
       },
     });
-  
+
     res.status(200).json({ success: true, client_secret: myPayment.client_secret });
   } catch (error) {
-    console.log("Error is :" + error.message);
+    res.status(200).json({ success: false, error: error.message });
   }
 };
 
