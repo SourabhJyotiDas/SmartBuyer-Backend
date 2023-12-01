@@ -15,13 +15,13 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(fileUpload());
-app.use(
-   cors({
-      credentials: true,
-      origin: "https://smartbuyer.netlify.app",
-      methods: ["GET", "POST", "PUT", "DELETE"],
-   })
-);
+
+const corsOptions = {
+   origin: ['https://smartbuyer.netlify.app', 'http://localhost:3000'],
+   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+   credentials: true,
+};
+app.use(cors(corsOptions));
 
 app.get('/', async (req, res) => {
    res.send("Working Fine");
