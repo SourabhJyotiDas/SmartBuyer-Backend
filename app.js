@@ -17,10 +17,11 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(fileUpload());
 
 const corsOptions = {
-   origin: ['https://smartbuyer.netlify.app', 'http://localhost:3000'],
-   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
    credentials: true,
+   origin: ['https://smartbuyer.netlify.app', 'http://localhost:3000'],
+   methods: ["GET", "POST", "PUT", "DELETE"],
 };
+
 app.use(cors(corsOptions));
 
 app.get('/', async (req, res) => {
